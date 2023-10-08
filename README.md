@@ -17,7 +17,7 @@ This is a web-based bus reservation system implemented using HTML, Bootstrap, Ja
 - Django (latest version)
 - A modern web browser
 
-##Usage
+## Usage
 - Register or log in as a customer.
 - Browse available buses and select a route.
 - Make a reservation by choosing the desired seats and providing necessary information.
