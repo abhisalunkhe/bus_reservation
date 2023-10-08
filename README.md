@@ -23,4 +23,4 @@ This is a web-based bus reservation system implemented using HTML, Bootstrap, Ja
 - Make a reservation by choosing the desired seats and providing necessary information.
 - View your reservations to see the details.
 
-# Live Demo: busreservation.sanisalunkhe420.repl.co
+# Live Demo: https://busreservation.sanisalunkhe420.repl.co
