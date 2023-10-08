@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main>
+        <div class="container border d-flex justify-content-center align-items-center my-5">
+          <div class="container p-2">
+            <img src="{{bus.image.url}}" class="image-responsive w-50 h-50">
+          </div>
+          <div class="container fs-5">
+            <ul class="list-group">
+            <li class="list-group-item"><b>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{bus.name}}</li>
+            <li class="list-group-item"><b>Route:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{bus.route}}</li>
+            <li class="list-group-item"><b>Distance:&nbsp;&nbsp;&nbsp;</b> {{bus.distance}} Km</li>
+            <li class="list-group-item"><b>Duration:&nbsp;&nbsp;</b> {{bus.duration}} Hrs</li>
+            <li class="list-group-item"><b>Available seat:&nbsp;&nbsp;</b> {{bus.available_seats}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="container w-50 mb-5 card">
+          <form class="fs-4 row" action="{% url 'my_reservation' %}" method="POST">
+            {% csrf_token %}
+            <h1 class="card-header text-center">Book Your Seat</h1>
+            <div class="mb-3 col-lg-6">
+                <label class="form-label">Name:</label>
+                <input type="text" class="form-control" readonly name="name" placeholder="Your Name" value="{{user.username}}">
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label class="form-label">Email:</label>
+                <input type="email" class="form-control" readonly name="email" readonly placeholder="Your Email" value="{{user.email}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone No:</label>
+                <input type="text" class="form-control" maxlength="10" name="phone" placeholder="Enter Phone No." required>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label class="form-label">Number of Adults:</label>
+                <input type="number" class="form-control" name="adults" id="adults" min="1" placeholder="Enter number of adults" required>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label class="form-label">Number of Children:</label>
+                <input type="number" class="form-control" name="childrens" id="childrens" min="1" placeholder="Enter number of childrens" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Type of Bus:</label>
+                <input type="text" class="form-control" name="type" placeholder="Bus Type" value="{{bus.bus_type}}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Total Fare:</label>
+                <input type="number" class="form-control" name="total" id="total" placeholder="Total Fare" readonly>
+            </div>
+                <input type="hidden" name="bus_name" value="{{ bus.name }}">
+                <input type="hidden" name="route" value="{{ bus.route }}">
+                <input type="hidden" name="type" value="{{ bus.bus_type }}">
+                <input type="hidden" name="duration" value="{{ bus.duration }}">
+            <div class="mb-3 card-footer text-center">
+              <button type="submit" class="btn btn-info fs-4 text-white">Book Reservation</button>
+            </div>
+          </form>
+        </div>
+    </main>
+
+    <script>
+    document.getElementById('adults').addEventListener('input', calculateTotal);
+    document.getElementById('childrens').addEventListener('input', calculateTotal);
+
+    function calculateTotal() {
+        var adults = parseInt(document.getElementById('adults').value) || 0;
+        var childrens = parseInt(document.getElementById('childrens').value) || 0;
+        var total = (adults * 100.00) + (childrens * 50.00);
+        document.getElementById('total').value = total;
+    }
+
+    window.onload = function() {
+        alert('Payment will be done in offline mode!!!');
+    }
+</script>
+
+{% endblock %}

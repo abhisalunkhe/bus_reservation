@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <div class="container d-flex mb-2">
+    	<div class="container justify-content-center card mt-3 fs-4">
+  			<form class="row g-3 " action="#" method="POST">
+  				<h2 class="text-center card-header">Connect Here</h2>
+  			  <div class="col-md-12">
+  			    <label for="inputUsername4" class="form-label">Name</label>
+  			    <input type="text" class="form-control" name="name" placeholder="Enter Name">
+  			  </div>
+  			  <div class="col-md-12">
+  			    <label for="inputEmail4" class="form-label">Email</label>
+  			    <input type="email" class="form-control" name="email" placeholder="Enter Email" >
+  			  </div>
+  			  <div class="col-md-12">
+  			    <label for="inputEmail4" class="form-label">Subject</label>
+  			    <input type="text" class="form-control" name="subject" placeholder="Enter Subject">
+  			  </div>
+  			  <div class="col-md-12">
+  			    <label for="inputEmail4" class="form-label">Message</label>
+  			    <input type="text" class="form-control" name="message" placeholder="Enter Message">
+  			  </div>
+  			  <div class="col-md-12 card-footer text-center">
+  			    <button type="submit" class="btn btn-info text-white fw-bold fs-4">Register</button>
+  			  </div>
+  			</form>
+		  </div>
+    </div>
+    </main>
+
+
+
+{% endblock %}

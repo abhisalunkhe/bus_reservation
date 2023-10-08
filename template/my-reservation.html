@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <main>
+
+      {% if username %}
+      <h1 class="display-6 text-center text-body-secondary">Your Reservations,<span class="fw-bold"> {{username}}!</span></h1>
+
+
+      <div class="container my-5 table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">No of Adult</th>
+              <th scope="col">No of children</th>
+              <th scope="col">Total Fare</th>
+              <th scope="col">Bus Name</th>
+              <th scope="col">Route</th>
+              <th scope="col">Bus Type</th>
+              <th scope="col">Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#</td>
+                <td>{{username}}</td>
+                <td>{{email}}</td>
+                <td>{{phone}}</td>
+                <td>{{adults}}</td>
+                <td>{{childrens}}</td>
+                <td>{{total_fare}} Rs</td>
+                <td>{{bus_name}}</td>
+                <td>{{route}}</td>
+                <td>{{bus_type}}</td>
+                <td>{{duration}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+
+        {% else %}
+          <h2 class="display-4 text-center text-body-secondary">Hello,<span class="fw-bold"> {{request.user}}!</span></h2>
+          <h1 class="display-4 text-center text-danger mx-auto">You don't have any previous reservations!</h1>
+
+        {% endif %}
+    </main>
+
+{% endblock %}

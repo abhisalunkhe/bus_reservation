@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-2">
+        <div class="row align-items-center g-lg-5 py-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <p class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Travelopro - Be Limit Less</p>
+            <p class="col-lg-10 fs-4">Embark on epic journeys, explore exotic destinations, and create lasting memories with our curated travel experiences. Unearth your next adventure today!</p>
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="{% url 'login' %}" method="POST">
+              {% csrf_token %}
+            	<h3 class="text-center">Login here</h3>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Enter User Name">
+                <label for="floatingInput">User Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Enter Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+              <hr class="my-4">
+              <small class="text-body-secondary">By clicking Sign in, you agree to the terms of use.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <h1 class="display-6 text-center text-success">Welcome, <span class="fw-bold">{{user.username}}</span></h1>
+
+
+  <div class="bg-light text-secondary mt-2 px-4 py-3 text-center">
+    <div class="py-3">
+      <h1 class="display-6 fw-bold text-secondary">Dark color hero</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Embark on a journey of discovery and wanderlust with our curated travel experiences. From pristine beaches to ancient wonders, let every step be a story worth telling. Unleash the explorer in you and create memories that will last a lifetime. Your adventure begins here</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-info btn-lg text-dark px-4 me-sm-3 fw-bold" onclick="offer()">Hit to know Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h1 class="text-center display-6 fw-bold text-secondary">Available Buses</h1>
+
+    <div class="container-fluid py-2 bg-body-tertiary mb-2">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          {% for bus in buses %}
+          
+          <div class="col">
+            <div class="card shadow-sm align-items-center">
+              <a href="{% url 'reservation' bus.id %}" class="text-decoration"><img src="{{bus.image.url}}" alt="image" class="image-responsive card-header"></a>
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item"><b>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{bus.name}}</li>
+                  <li class="list-group-item"><b>Route:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{bus.route}}</li>
+                  <li class="list-group-item"><b>Distance:&nbsp;&nbsp;&nbsp;</b> {{bus.distance}} Km</li>
+                  <li class="list-group-item"><b>Duration:&nbsp;&nbsp;</b> {{bus.duration}} Hrs</li>
+                  <li class="list-group-item"><b>Bus Type:&nbsp;&nbsp;</b> {{bus.bus_type}}</li>
+                  <li class="list-group-item"><b>Availabel seat:&nbsp;&nbsp;</b> {{bus.available_seats}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      function offer(){
+        window.alert('Diwali Bumper Offer! Get 15% discount on every return ticket.');
+      }
+
+      window.onload = function(){
+        window.alert('Because of some technical issue payment will be done offline. Sorry for inconvinience!');
+      }
+    </script>
+  
+
+{% endblock %}
